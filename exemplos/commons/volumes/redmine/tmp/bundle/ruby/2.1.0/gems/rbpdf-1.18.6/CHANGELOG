@@ -1,0 +1,80 @@
+1.18.6 2015-06-20
+       - Fixed page boxes problem for iOS.
+       - The dependence to the Rails environment was reduced.
+       - Fixed Image tag's style attribute width/height parameter problem.
+       - Open angled bracket '<' by HTML sanitize bug fixed.
+
+1.18.5 2015-01-24
+       - Rails 4.2 and Ruby 2.2 supported.
+       - Fix Rails 4.2 (new HTML sanitizer) compatible.
+       - Method getHTMLUnitToUnits() and SetDisplayMode() was fixed, and the problem when dividing, by an integer was fixed. 
+       - Remove Rails 4.2 deprecated ::ActionView::Base.sanitized_allowed_css_properties=.
+       - Fixed no left padding problem on tables.
+       - Fixed thead tag position problem on page break.
+       - fix case of missing HTML image (without height attribute) file. 
+
+1.18.4 2014-12-21
+       - utf8Bidi() Persion 0x200C(8204) and endedletter bug fixed.
+       - utf8Bidi() Bidirectional Algorithm X9/I1 rule BN(ZERO WIDTH NON-JOINER) bug fixed.
+       - utf8Bidi() Bidirectional Algorithm N1/N2 rule B/S/WS/ON bug fixed.
+       - utf8Bidi() Bidirectional Algorithm W2/W7 rule bug fixed.
+       - utf8Bidi() Bidirectional Algorithm N1/N2 rule multiple NIs bug fixed.
+       - RTL direction problem fixed. isRTLTextDir direction bug fixed.
+       - utf8Bidi() speed was improved.
+
+1.18.3 2014-12-06
+       - fixed img and hr self html tag DOM problem.
+       - fixed HTML table problem in writeHTMLCell function.
+       - fixed the problem which is not separated when table tag continues.
+       - fixed the problem that CSS classes don't work in thead table section.
+       - HTML image margin was fixed so that a picture in the HTML table didn't overwrite a boundary line.
+       - Method Write() was fixed to handle arabic strings.
+       - Parameter of the method was changed fixed.
+       - getPageDimensions, getBreakMargin, GetBreakMargin, startPageGroup methods fixed.
+       - LICENSE.TXT file added.
+
+1.18.2 2014-10-25 
+       - getNumLines and a getStringHeight function fixed the problem which is wrong by the case of two or more lines.
+       - fix case of missing image file.
+
+1.18.1 2014-09-15 
+       - ImagePngAlpha function fixed for the error case where an alpha channel cannot be deleted.
+       - getimagesize function fixed for MAC OS rmagick.
+       - getimagesize function fixed for grayscale JPEG Image.
+       - 16-bit PNG with alpha channel image support improved. (use RMagick liblary)
+
+1.18.0 2014-08-16 
+       - rfpdf product name and TCPDF class name changed to RBPDF.
+       - ImagePngAlpha function added.
+
+1.17.4 2014-07-28
+       - getNumLines, getStringHeight, getMargins function added.
+       - fix large image file page break bug.
+
+1.17.3 2014-07-16 Several bug fixed.
+
+1.17.2 2014-07-09 FreeSerif font added from GNU FreeFont(20080912).
+
+1.17   2014-05-18 Update base version to TCPDF 5.1.002. Ruby 2.0/2.1 support. FPDF is deprecated.
+
+1.16   2012-09-08 Rails 3.* and Ruby 1.9.* support, and fix FPDF severral bug.
+       Jun NAITOH took over development of RFPDF from Edwin Moss.
+
+1.15   2009-11-20 Rails 2.* support - Thanks to Prawnto plugin for showing the way to the new TemplateHandler
+
+1.14   2006-09-26
+       * Added support for @options_for_rfpdf hash for configuration:
+       * Added :filename option in this hash
+       If you're using the same settings for @options_for_rfpdf often, you might want to 
+       put your assignment in a before_filter (perhaps overriding :filename, etc in your actions).
+
+1.13   Updated to fpdf.rb 1.53d.
+       Added makefont and fpdf_eps.
+       Handle \n at the beginning of a string in MultiCell.
+       Tried to fix clipping issue in MultiCell - still needs some work.
+
+1.12   Added Korean support
+1.11   Added Japanese support
+1.10   Added Chinese support
+1.00   Added view template functionality
+

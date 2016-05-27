@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+#require 'test/unit'
+#require 'active_support'
+require 'rbpdf'
+
+=begin
+if Rails::VERSION::MAJOR >= 4
+#  require 'active_support/testing/autorun' # Rails 4.2
+
+gem 'test-unit'
+require 'test/unit'
+#Test::Unit::AutoRunner.new(true).run
+Test::Unit::AutoRunner.new(false).run
+#(r = Test::Unit::AutoRunner.new(true)).process_args(ARGV) or
+#  abort r.options.banner + " tests..."
+#exit r.run
+
+#  require 'active_support/testing/autorun' # Rails 4.2
+
+#gem 'minitest'
+#require 'minitest'
+#Minitest.autorun
+
+else
+=end
+#  require 'rails/all'
+require "rails"
+
+  class Application < Rails::Application
+  end
+#end

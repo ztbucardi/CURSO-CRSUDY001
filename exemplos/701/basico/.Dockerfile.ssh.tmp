@@ -1,0 +1,53 @@
+FROM ubuntu:14.04
+MAINTAINER Leandro Augusto <leandro@zaytech.com.br>
+
+# LABEL'S
+LABEL "com.example.vendor"="Udemy Course"
+LABEL version="1.0"
+LABEL description="Curso de Docker: \
+Exemplo basico de Dockerfile."
+
+# Variaveis
+ENV DIR_BASE=/usr/src
+ENV DIR_TESTE1=$DIR_BASE/teste1
+ENV USER=leandro
+ENV PASS=12345
+
+
+# Adiciona arquivos 
+ADD arquivos/exemplos* $DIR_TESTE1
+ADD arquivos/apt_defaults.pgks /tmp/apt_defaults.pgks
+
+# Executa processos
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update
+RUN apt-get -y upgrade
+
+RUN apt-get -y install autoconf build-essential gcc make 
+RUN apt-get install -y -q $(cat /tmp/apt_defaults.pgks)
+
+RUN locale-gen pt_BR.UTF-8
+RUN update-locale LANG=pt_BR.UTF-8
+
+# Configura ssh
+RUN apt-get install -y -q openssh-server
+RUN mkdir /var/run/sshd
+RUN echo 'root:12345' |chpasswd
+RUN sed -i "s/PermitRootLogin without-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
+
+#########################################################
+
+# PORTS
+EXPOSE 80
+EXPOSE 81
+EXPOSE 82 83
+
+# VOLUMES
+VOLUME ["/usr/src", "/home"]
+
+
+#########################################################
+
+# CMD
+CMD ["/bin/bash"]

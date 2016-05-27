@@ -1,0 +1,43 @@
+redmine_app:
+  image: sameersbn/redmine:3.1.1-3
+  links:
+    - redmine_db
+  volumes:
+    - ./volumes/redmine_app:/home/redmine/data
+    - ./volumes/redmine_app_files:/home/redmine/data/files
+    - /x/projetos/repositories:/home/redmine/repository
+  ports:
+    - "10001:80"
+  environment:
+    DB_TYPE: 'mysql'
+    DB_HOST: 'redmine_db'
+    DB_NAME: 'projects_redmine_db'
+    DB_USER: 'projects_user'
+    DB_PASS: 'zayth12345'
+    SMTP_USER: 'system@zaytech.com.br'
+    SMTP_PASS: 'zayth12345'
+    SMTP_STARTTLS: 'true'
+    SMTP_HOST: 'smtp.gmail.com'
+    SMTP_PORT: 587
+    SMTP_DOMAIN: 'zaytech.com.br'
+
+
+redmine_db:
+  image: sameersbn/mysql:latest
+  volumes:
+    - ./volumes/redmine_db:/var/lib/mysql 
+  environment:
+    DB_NAME: 'projects_redmine_db'
+    DB_USER: 'projects_user'
+    DB_PASS: 'zayth12345'
+
+
+nginx-app:
+  image: sameersbn/nginx
+  ports:
+    - "80:80"
+  volumes:
+    - ./volumes/nginx:/etc/nginx/sites-enabled
+  links:
+    - redmine_db
+    - redmine_app
